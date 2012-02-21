@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<!--
+	***********************************************************
+						MAPREDUCE MAPPING
+	*********************************************************** 
+	-->
+
+	<servlet>
+		<servlet-name>mapreduce</servlet-name>
+		<servlet-class>com.google.appengine.tools.mapreduce.MapReduceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mapreduce</servlet-name>
+		<url-pattern>/mapreduce/*</url-pattern>
+	</servlet-mapping>
+	
+	<!--
+	***********************************************************
+						FRAMEWORK SERVLET
+	*********************************************************** 
+	-->
+
+	<servlet>
+		<servlet-name>ReduceQueueServlet</servlet-name>
+		<servlet-class>it.unina.gaeframework.geneticalgorithm.servlet.ReduceQueueServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReduceQueueServlet</servlet-name>
+		<url-pattern>/reducequeueservlet</url-pattern>
+		<!--<url-pattern>/gaprocess/reducequeueservlet</url-pattern>  -->
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MonitorServlet</servlet-name>
+		<servlet-class>it.unina.gaeframework.geneticalgorithm.servlet.MonitorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MonitorServlet</servlet-name>
+		<url-pattern>/monitorservlet</url-pattern>
+		<!--<url-pattern>/gaview/monitorservlet</url-pattern>  -->
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DeleteDataServlet</servlet-name>
+		<servlet-class>it.unina.gaeframework.geneticalgorithm.servlet.DeleteDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteDataServlet</servlet-name>
+		<url-pattern>/deletedataservlet</url-pattern>
+		<!--<url-pattern>/gaprocess/deletedataservlet</url-pattern>  -->
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GAStartServlet</servlet-name>
+		<servlet-class>it.unina.gaeframework.geneticalgorithm.servlet.GAStartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GAStartServlet</servlet-name>
+		<url-pattern>/gastartservlet</url-pattern>
+		<!--<url-pattern>/gaprocess/gastartservlet</url-pattern>  -->
+	</servlet-mapping>
+
+	<!--
+	***********************************************************
+						FRAMEWORK TASK
+	***********************************************************
+	-->
+	
+	<servlet>
+		<servlet-name>InitializePopolationTask</servlet-name>
+		<servlet-class>it.unina.gaeframework.geneticalgorithm.task.InitializePopolationTask</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitializePopolationTask</servlet-name>
+		<url-pattern>/initializepopolationtask</url-pattern>
+		<!--<url-pattern>/gatask/initializepopolationtask</url-pattern>  -->
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GeneticReduceWorkerTask</servlet-name>
+		<servlet-class>it.unina.gaeframework.geneticalgorithm.task.GeneticReduceWorkerTask</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GeneticReduceWorkerTask</servlet-name>
+		<url-pattern>/geneticreduceworkertask</url-pattern>
+			<!--<url-pattern>/gatask/geneticreduceworkertask</url-pattern>  -->
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CheckStopTask</servlet-name>
+		<servlet-class>it.unina.gaeframework.geneticalgorithm.task.CheckStopTask</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckStopTask</servlet-name>
+		<url-pattern>/checkstoptask</url-pattern>
+		<!--<url-pattern>/gatask/checkstoptask</url-pattern>  -->
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>DeleteDataViaTask</servlet-name>
+		<servlet-class>it.unina.gaeframework.geneticalgorithm.task.DeleteDataViaTask</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteDataViaTask</servlet-name>
+		<url-pattern>/deletedataviatask</url-pattern>
+		<!--<url-pattern>/gatask/deletedataviatask</url-pattern>  -->
+	</servlet-mapping>
+		
+	<servlet>
+		<servlet-name>DeleteMapReduceStatusTask</servlet-name>
+		<servlet-class>it.unina.gaeframework.geneticalgorithm.task.DeleteMapReduceStatusTask</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteMapReduceStatusTask</servlet-name>
+		<url-pattern>/deletemapreducestatustask</url-pattern>
+		<!--<url-pattern>/gatask/deletemapreducestatustask</url-pattern>  -->
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteCacheViaTask</servlet-name>
+		<servlet-class>it.unina.gaeframework.geneticalgorithm.task.DeleteCacheViaTask</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteCacheViaTask</servlet-name>
+		<url-pattern>/deletecacheviatask</url-pattern>
+		<!--<url-pattern>/gatask/deletecacheviatask</url-pattern>  -->
+	</servlet-mapping>
+	
+	
+</web-app>

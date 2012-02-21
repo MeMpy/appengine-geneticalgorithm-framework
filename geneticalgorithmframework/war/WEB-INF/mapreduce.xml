@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurations>
+
+	<!-- Nome visualizzato nel lancio dei job -->
+	<configuration name="geneticmapworker">
+
+		<!-- Nome della classe in cui viene implementato il mapper -->
+		<property>
+			<name>mapreduce.map.class</name>
+			<value>it.unina.gaeframework.geneticalgorithm.mapreduce.GeneticMapWorker</value>
+		</property>
+
+		<!--
+			This is a default tool that lets us iterate over datastore entities
+			Al momento è possibile usare solo questo
+		-->
+		<property>
+			<name>mapreduce.inputformat.class</name>
+			<value>it.unina.gaeframework.geneticalgorithm.mapreduce.GADatastoreInputFormat</value>
+		</property>
+
+
+		<!--
+			The aggregate number of entities processed per second by all mappers.
+			Used to prevent large amounts of quota being used up in a short time
+			period. default value 1000
+		-->
+		<property>
+			<name>mapreduce.mapper.inputprocessingrate</name>
+			<value>1000</value>
+		</property>
+
+		<!--
+			The number of concurrent workers to use. This also determines the
+			number of shards to split the input into.
+		-->
+		<property>
+			<name>mapreduce.mapper.shardcount</name>
+			<value>10</value>
+		</property>
+
+		<!--
+			A url in the format accepted by the task queue constructor to call
+			after the mapper job is completed. The given url is sent a POST
+			request with a paremeter of job_id, set to the completed MR's job ID.
+		-->
+		<property>
+			<name>mapreduce.appengine.donecallback.url</name>
+			<value>/reducequeueservlet</value>
+		</property>
+
+		<!--
+			The datastore entity to map over. Cioè il nome dell'entità da
+			inserire per lanciare i Job
+		-->
+		 <property>
+			<name human="Entity Kind to Map">mapreduce.mapper.inputformat.datastoreinputformat.entitykind</name>
+			<value template="optional">StructuredTestChromosome</value>
+		</property>
+		
+
+	</configuration>
+	
+</configurations>
+

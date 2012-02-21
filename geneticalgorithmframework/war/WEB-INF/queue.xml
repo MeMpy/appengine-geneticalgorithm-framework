@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queue-entries>
+	<queue>
+		<name>default</name>
+		<rate>40/s</rate>
+		<bucket-size>100</bucket-size>
+	</queue>
+	
+	<queue>
+		<name>geneticqueue</name>
+		<rate>5/s</rate>
+		<bucket-size>10</bucket-size>
+		<max-concurrent-requests>1</max-concurrent-requests>
+	</queue>
+</queue-entries>

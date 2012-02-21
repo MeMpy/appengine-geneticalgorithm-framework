@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gaconfiguration> <!-- File di configurazione del framework GA -->
+	<!-- Nome completo della classe per la generazione della popolazione REQUIRED -->
+	<chromosomefactoryclass>it.gafexemple.dejong.DeJongChrFactory</chromosomefactoryclass>
+
+	<!-- Nome completo della classe per la valutazione della fitness REQUIRED -->
+	<fitnessevaluatorclass>it.gafexemple.dejong.DeJongFitness</fitnessevaluatorclass>
+
+	<!-- Nome completo della classe per il postprocessing dopo la valutazione degli individui NOT REQUIRED -->
+	<postevaluationprocessingclass></postevaluationprocessingclass>
+	
+	<!-- Criterio di selezione degli individui da cui nascerà la nuova generazione REQUIRED -->
+	<selectioncriterion>it.unina.gaeframework.geneticalgorithm.defaultselectioncriteria.HybridSelectionCriterion</selectioncriterion>
+
+	<!-- URL verso cui reindirizzare l'esecuzione al termine del GA  NOT REQUIRED-->
+	<postprocessingtaskurl></postprocessingtaskurl>
+
+	<!-- Numero di individui per iterazione REQUIRED-->
+	<populationsize>100</populationsize>
+
+	<!-- Numero di figli per iterazione REQUIRED-->
+	<newoffspringforiteration>50</newoffspringforiteration>
+	<!--E' possibile indicare anche un numero di figli proporzionale alla grandezza 
+		della popolazione così: <newoffspringforiterationpercentage>0.1</newoffspringforiterationpercentage> 
+		Ovviamente è possibile specificare solo uno tra newoffspringforiteration 
+		e newoffspringforiterationpercentage -->
+
+	<!--Probabilità con cui eseguire la mutazione di un singolo gene REQUIRED -->
+	<mutationprobability>1</mutationprobability>
+
+	<!-- Criteti di stop forniti di default -->
+	<!-- Numero massimo di iterazioni totali REQUIRED -->
+	<maxiterations>100</maxiterations>
+	<!-- Numero massimo di iterazioni senza incrementi di fitness REQUIRED-->
+	<iterationswithnofitnessincrement>200</iterationswithnofitnessincrement>
+	<!-- Incremento di fitness utile per poter passare all'iterazioni successiva 
+		del GA REQUIRED-->
+	<fitnessincrement>0.1</fitnessincrement>
+	<!-- Valore della fitness minimo da raggiungere per poter terminare con 
+		successo il GA NOT REQUIRED-->
+	<minfitnesstoreach>0</minfitnesstoreach>
+
+	<!-- Nome completo della classe che fornisce un criterio di stop aggiuntivo 
+		NOT REQUIRED -->
+	<userstopcriterionclass></userstopcriterionclass>
+
+	<!-- Numero di isole, al momento è inutile in quanto non è previsto parallelizzare 
+		il reduce in quanto non necessario NOT REQUIRED-->
+	<islandnum>1</islandnum>
+
+	<!-- Numero di map worker, se non viene specificato il numero di default
+		sarà 10 NOT REQUIRED -->
+	<mapworkercount>30</mapworkercount>
+</gaconfiguration>
