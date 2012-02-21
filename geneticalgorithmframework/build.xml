@@ -1,0 +1,95 @@
+<project name="Genetic Algorithm Framework" default="dist" basedir=".">
+    <description>
+        Un Framework per Algoritmi Genetici su Google AppEngine 
+        parallelizzato con il modello MapReduce
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src" />
+  <property name="build" location="build" />
+  <property name="lib" location="war/WEB-INF/lib" />
+  <property name="dist" location="dist" />
+
+  <property name="sdk" location="sdk" />
+  <property name="version" value="1.6.1" />
+  <property name="sdkdirname" value="appengine-java-sdk-${version}" />
+  <property name="sdkfilename" value="${sdkdirname}.zip" />
+  <property name="sdklibdir" location="${sdk}/${sdkdirname}/lib" />
+
+  <path id="sdkjars">
+    <fileset dir="${sdklibdir}/user">
+      <include name="appengine-api-1.0-sdk-${version}.jar" />
+    </fileset>
+    <fileset dir="${sdklibdir}/shared">
+      <include name="geronimo-servlet_2.5_spec-1.2.jar" />
+      <include name="servlet-api.jar" />
+    </fileset>
+  </path>
+
+  <!-- We plan to move to downloading all of these on the fly, but for now
+       hadoop is modified, json is jar'ed up, and the other two are released
+       relatively infrequently. -->
+  <path id="thirdpartyjars">
+    <fileset dir="${lib}">
+      <include name="*.jar" />
+    </fileset>
+  </path>
+
+
+  <target name="init">
+    <mkdir dir="${build}" />
+  </target>
+
+  <target name="compile" depends="init,download_sdk">
+    <javac srcdir="${src}" destdir="${build}" debug="on" debuglevel="lines,source">
+      <classpath>
+        <path refid="sdkjars" />
+        <path refid="thirdpartyjars" />
+      </classpath>
+    </javac>
+  </target>
+
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+
+    <!-- Put everything in ${build} into GAF.jar file -->
+    <jar jarfile="${dist}/lib/GAF.jar" basedir="${build}"/>
+    <copy todir="${dist}/lib">
+    	<fileset dir="${lib}">
+    		<include name="commons*.jar" />
+    		<include name="DatastoreUtil.jar" />
+    		<include name="appengine-mapper.jar" />
+    		<include name="charts4j-1.2.jar" />
+    		<include name="guava-r07.jar" />
+    		<include name="hadoop-0.20.2-core.jar" />
+    		<include name="json.jar" />
+    	
+    	</fileset>
+    </copy>
+  </target>
+
+  <target name="clean">
+    <delete dir="${build}" />
+    <delete dir="${dist}" />
+  </target>
+
+  <target name="check_sdk_extracted">
+    <available file="${sdk}/${sdkdirname}" property="sdkextracted" />
+  </target>
+
+  <target name="download_sdk" description="Gets the AppEngine SDK" depends="check_sdk_extracted" unless="sdkextracted">
+    <mkdir dir="${sdk}" />
+    <get src="http://googleappengine.googlecode.com/files/${sdkfilename}" dest="${sdk}/${sdkfilename}" />
+    <unzip src="${sdk}/${sdkfilename}" dest="${sdk}" />
+  </target>
+
+  <!-- Separate target because downloading the SDK can be expensive and
+       usually only needs to be done once. -->
+  <target name="clean_sdk">
+    <delete dir="${sdk}" />
+  </target>
+
+
+</project>
