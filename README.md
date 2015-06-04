@@ -11,39 +11,31 @@ The idea was that the framework took care of the parallelization and rappresenta
 
 This is the Getting Started Guide:
 
-Iniziare ad usare il Framework
 
-= Introduction =
-
-In questa pagina spiegheremo come settare il proprio progetto per poter utilizzare il Framework
+<b>First Step: </b> <br>
+Clone the project and build with ant.
 
 
-= Details =
+<b>Second Step: </b> <br>
 
-<b>Primo passo: </b> <br>
-Effettuare il checkout del progetto e compilarlo con ant.
-
-
-<b>Secondo passo: </b> <br>
-
-Nella cartella
+In the folder
 
 <code> war/WEB-INF/ </code> 
 
-inserire il seguente file:
+insert the file:
 
-<a href=http://code.google.com/p/appengine-geneticalgorithm-framework/source/browse/trunk/geneticalgorithmframework/war/WEB-INF/mapreduce.xml> mapreduce.xml </a>
+<a href=https://github.com/MeMpy/appengine-geneticalgorithm-framework/blob/master/geneticalgorithmframework/war/WEB-INF/mapreduce.xml> mapreduce.xml </a>
 
-lasciandolo invariato. <br>
+without change it. <br>
 
-<b> Terzo passo: </b> <br>
+<b> Third step: </b> <br>
 
-Modificare il proprio file <i> web.xml </i> inserendo il servlet mapping del framework come è mostrato nel seguente file:
+Modify your  <i> web.xml </i> inserting the framework servlet mapping as follows:
 
-<a href=http://code.google.com/p/appengine-geneticalgorithm-framework/source/browse/trunk/geneticalgorithmframework/war/WEB-INF/web.xml> web.xml </a>
+<a href=https://github.com/MeMpy/appengine-geneticalgorithm-framework/blob/master/geneticalgorithmframework/war/WEB-INF/web.xml> web.xml </a>
 
-<b> Quarto passo: </b> <br>
+<b> Fourth step: </b> <br>
 
-Inserire nella <i>root directory</i> dei <i>source file </i>, tipicamente <code> src/ </code> il file di configurazione del Framework:
+Insert in the <i>source root directory</i>, typically <code> src/ </code> the framework configuration file:
 
-<a href=http://code.google.com/p/appengine-geneticalgorithm-framework/source/browse/trunk/geneticalgorithmframework/exemple/geneticalgorithm.xml> geneticalgorithm.xml </a>
+<a href=https://github.com/MeMpy/appengine-geneticalgorithm-framework/blob/master/geneticalgorithmframework/exemple/geneticalgorithm.xml> geneticalgorithm.xml </a>
