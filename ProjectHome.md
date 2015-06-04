@@ -1,0 +1,3 @@
+Abbiamo creato un Framework per eseguire algoritmi genetici sul cloud di Google parallelizzati con MapReduce. Utilizzarlo è molto semplice,tramite l'implementazione di alcune interfacce si indicherà al Framework la rappresentazione del problema e gli operatori genetici scelti. E' possibile fornire anche dei criteri di terminazione aggiuntivi.
+
+Il Framework è scritto in Java ed è stato creato per una tesi di laurea magistrale in informatica presso l'università di Napoli, Federico II
